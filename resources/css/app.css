@@ -1,0 +1,6 @@
+.wrapper {
+    width: 100% !important;
+    will-change: auto !important;
+    transition: padding 0.15s !important;
+}
+
