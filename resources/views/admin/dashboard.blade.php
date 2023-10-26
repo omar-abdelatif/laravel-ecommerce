@@ -1,3 +1,1 @@
-<div>
-    this is admin dashboard
-</div>
+@extends('admin.layouts.master')
