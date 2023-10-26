@@ -8,32 +8,53 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VendorController;
 
-
 Auth::routes();
+
+Route::view('/', 'welcome');
 
 Route::view('login', 'auth.login')->name('login');
 
 //! Admin Routes
-Route::group(['prefix' => 'admin'], function () {
-    Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::group(['prefix' => 'admin'], function () {
         //! Dashboard Routes
-        Route::controller(AdminController::class)->group(function () {
-            Route::get('dashboard', 'AdminDashboard')->name('admin.dashboard');
+        Route::controller(DashboardController::class)->group(function () {
+            Route::get('dashboard', 'index')->name('dashboard');
+        });
+        //! Profile Routes
+        Route::controller(ProfileController::class)->group(function () {
+            Route::get('profile', 'show')->name('profile.show');
+            Route::put('profile', 'update')->name('profile.update');
+        });
+        //! User Routes
+        Route::controller(UserController::class)->group(function () {
+            Route::view('users', 'users.index')->name('users.index');
         });
     });
 });
 
 // ! Vendor Routes
-Route::group(['prefix' => 'vendor'], function () {
-    Route::middleware(['auth', 'role:vendor'])->group(function () {
+Route::middleware(['auth', 'role:vendor'])->group(function () {
+    Route::group(['prefix' => 'vendor'], function () {
         //! Dashboard Routes
-        Route::controller(VendorController::class)->group(function () {
-            Route::get('dashboard', 'VendorDashboard')->name('vendor.dashboard');
+        Route::controller(DashboardController::class)->group(function () {
+            Route::get('dashboard', 'index')->name('dashboard');
         });
+        //! Profile Routes
+        Route::controller(ProfileController::class)->group(function () {
+            Route::get('profile', 'show')->name('profile.show');
+            Route::put('profile', 'update')->name('profile.update');
+        });
+        //! User Routes
+        Route::controller(UserController::class)->group(function () {
+            Route::view('users', 'users.index')->name('users.index');
+        });
+        //! About Routes
+        Route::view('about', 'about')->name('about');
     });
 });
 
-// //! User Routes
+//! User Routes
 Route::middleware(['auth'])->group(function () {
     //! Dashboard Routes
     Route::controller(DashboardController::class)->group(function(){
@@ -46,9 +67,9 @@ Route::middleware(['auth'])->group(function () {
     });
     //! User Routes
     Route::controller(UserController::class)->group(function(){
-        Route::
-        view('users', 'users')->name('users.index');
+        Route::view('users', 'users.index')->name('users.index');
     });
+    //! About Routes
     Route::view('about', 'about')->name('about');
     
 });
