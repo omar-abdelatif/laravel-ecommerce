@@ -6,7 +6,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\VendorProfileController;
+
 
 Auth::routes();
 
@@ -18,12 +21,12 @@ Route::view('login', 'auth.login')->name('login');
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         //! Dashboard Routes
-        Route::controller(DashboardController::class)->group(function () {
-            Route::get('dashboard', 'index')->name('dashboard');
+        Route::controller(AdminController::class)->group(function () {
+            Route::get('dashboard', 'AdminDashboard')->name('admin.dashboard');
         });
         //! Profile Routes
-        Route::controller(ProfileController::class)->group(function () {
-            Route::get('profile', 'show')->name('profile.show');
+        Route::controller(AdminProfileController::class)->group(function () {
+            Route::get('profile', 'show')->name('admin.profile.show');
             Route::put('profile', 'update')->name('profile.update');
         });
         //! User Routes
@@ -37,12 +40,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:vendor'])->group(function () {
     Route::group(['prefix' => 'vendor'], function () {
         //! Dashboard Routes
-        Route::controller(DashboardController::class)->group(function () {
-            Route::get('dashboard', 'index')->name('dashboard');
+        Route::controller(VendorController::class)->group(function () {
+            Route::get('dashboard', 'VendorDashboard')->name('vendor.dashboard');
         });
         //! Profile Routes
-        Route::controller(ProfileController::class)->group(function () {
-            Route::get('profile', 'show')->name('profile.show');
+        Route::controller(VendorProfileController::class)->group(function () {
+            Route::get('profile', 'show')->name('vendor.profile.show');
             Route::put('profile', 'update')->name('profile.update');
         });
         //! User Routes

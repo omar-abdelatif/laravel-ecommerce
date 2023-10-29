@@ -1,10 +1,9 @@
-@extends('layouts.app')
+@extends('admin.layouts.master')
 
 @section('header')
     <header class="header header-sticky mb-4 d-block">
         <div class="container-fluid">
-            <button class="header-toggler px-md-0 me-md-3" type="button"
-                onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
+            <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
                 <svg class="icon icon-lg">
                     <use xlink:href="{{ asset('icons/coreui.svg#cil-menu') }}"></use>
                 </svg>
@@ -15,19 +14,18 @@
                 </svg>
             </a>
             <ul class="header-nav d-none d-md-flex">
-                <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                </li>
             </ul>
-            <ul class="header-nav ms-auto">
-
-            </ul>
+            <ul class="header-nav ms-auto"></ul>
             <ul class="header-nav ms-3">
                 <li class="nav-item dropdown">
-                    <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-end pt-0">
-                        <a class="dropdown-item" href="{{ route('profile.show') }}">
+                        <a class="dropdown-item" href="{{ route('admin.profile.show') }}">
                             <svg class="icon me-2">
                                 <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
                             </svg>
@@ -35,8 +33,7 @@
                         </a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); this.closest('form').submit();">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
                                 <svg class="icon me-2">
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-account-logout') }}"></use>
                                 </svg>
@@ -55,7 +52,7 @@
                         <div class="w-100 d-flex align-items-baseline justify-content-between mt-2">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                                    <a href="{{ route('admin.dashboard') }}">Dashboard</a>
                                 </li>
                                 <li class="breadcrumb-item active">Profile</li>
                             </ol>
@@ -67,7 +64,7 @@
     </header>
 @endsection
 
-@section('content')
+@section('admin')
     <div class="card mb-4">
         <div class="card-header">
             {{ __('My profile') }}
