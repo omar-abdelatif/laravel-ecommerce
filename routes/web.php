@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\RegisteVendorController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\VendorProfileController;
 
@@ -37,8 +38,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 // ! Vendor Routes
-Route::middleware(['auth', 'role:vendor'])->group(function () {
-    Route::group(['prefix' => 'vendor'], function () {
+Route::group(['prefix' => 'vendor'], function () {
+    //! Auth Routes
+    Route::controller(RegisteVendorController::class)->group(function () {
+        Route::get('register', 'index')->name('vendor.register');
+    });
+    Route::middleware(['auth', 'role:vendor'])->group(function () {
         //! Dashboard Routes
         Route::controller(VendorController::class)->group(function () {
             Route::get('dashboard', 'VendorDashboard')->name('vendor.dashboard');
