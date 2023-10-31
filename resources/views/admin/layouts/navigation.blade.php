@@ -8,14 +8,23 @@
         </a>
     </li>
 
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="{{ route('users.index') }}">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.allCategories') }}">
+            <svg class="nav-icon">
+                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+            </svg>
+            {{ __('Categories') }}
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.users') }}">
             <svg class="nav-icon">
                 <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
             </svg>
-            {{ __('Users') }}
+            {{ __('All Users') }}
         </a>
-    </li> --}}
+    </li>
 
     {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('about') }}">

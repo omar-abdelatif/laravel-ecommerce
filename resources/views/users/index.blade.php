@@ -79,10 +79,10 @@
 
             <table class="table">
                 <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                </tr>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @foreach($users as $user)
