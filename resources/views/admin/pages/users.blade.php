@@ -20,22 +20,36 @@
 @endsection
 @section('admin')
     <div class="col-12">
-        <div class="users-title text-center mt-5 mb-5 text-decoration-underline">
+        @if(session('success'))
+            <div class="alert alert-success mt-5 w-50 mx-auto text-center">
+                <p class="mb-0">
+                    <b>{{session('success')}}</b>
+                </p>
+            </div>
+        @elseif ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger mt-3 w-50 mx-auto text-center">
+                    <p class="mb-0">
+                        <b>{{$error}}</b>
+                    </p>
+                </div>
+            @endforeach
+        @endif
+        <div class="users-title text-center mt-3 mb-5 text-decoration-underline">
             <h2>All Users</h2>
         </div>
-        <table class="table text-center">
+        <table class="table text-center align-middle">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">UserName</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Img</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Action</th>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Img</th>
+                    <th>Status</th>
+                    <th>Role</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,7 +63,6 @@
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
-                        <td>{{ $user->address }}</td>
                         <td>
                             <img src="{{$user->img}}" class="rounded-circle" width="50" alt="">
                         </td>
@@ -60,7 +73,7 @@
                                 <a href="" class="btn btn-warning">
                                     <b>Edit</b>
                                 </a>
-                                <a href="" class="btn btn-danger">
+                                <a href="{{route('admin.delete',$user->id)}}" class="btn btn-danger">
                                     <b>Delete</b>
                                 </a>
                                 <a href="" class="btn btn-success">

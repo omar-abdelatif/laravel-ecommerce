@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="{{asset('assets/admin/css/custom.css')}}">
 </head>
-<body>
+<body class="dark-theme">
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
         <div class="sidebar-brand d-none d-md-flex">
             <h1 class="text-center sidebar-brand-full">Dashboard</h1>
@@ -69,25 +69,13 @@
             @yield('header')
         </header>
         <div class="body flex-grow-1 px-3">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     @yield('admin')
                 </div>
             </div>
         </div>
-        <footer class="footer">
-            <div>
-                <a href="https://coreui.io">CoreUI </a>
-                <a href="https://coreui.io">Bootstrap Admin Template</a>
-                &copy; 2021 creativeLabs.
-            </div>
-            <div class="ms-auto">
-                Powered by&nbsp;
-                <a href="https://coreui.io/bootstrap/ui-components/">
-                    CoreUI UI Components
-                </a>
-            </div>
-        </footer>
+        @include('admin.layouts.footer')
     </div>
     <script src="https://unpkg.com/@coreui/coreui-pro@4.6.3/dist/js/coreui.bundle.js"></script>
     <script src="{{asset('assets/admin/js/custom.js')}}"></script>

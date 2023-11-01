@@ -19,5 +19,19 @@
     </section>
 @endsection
 @section('admin')
-    
+    @if(session('success'))
+        <div class="alert alert-success mt-5 w-50 mx-auto text-center">
+            <p class="mb-0">
+                <b>{{session('success')}}</b>
+            </p>
+        </div>
+    @elseif ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger mt-3 w-50 mx-auto text-center">
+                <p class="mb-0">
+                    <b>{{$error}}</b>
+                </p>
+            </div>
+        @endforeach
+    @endif
 @endsection

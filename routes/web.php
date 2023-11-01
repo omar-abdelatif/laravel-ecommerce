@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin'], function () {
         //! User Routes
         Route::controller(UserController::class)->group(function () {
             Route::get('all_users', 'AdminUsers')->name('admin.users');
+            Route::get('delete_users/{id}', 'deleteUser')->name('admin.delete');
         });
     });
 });

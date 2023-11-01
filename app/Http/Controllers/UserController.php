@@ -12,4 +12,13 @@ class UserController extends Controller
 
         return view('admin.pages.users', compact('users'));
     }
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect()->route('admin.users')->withSuccess('Deleted Successfully!');
+        }
+        return redirect()->route('admin.users')->withErrors('Error Happen');
+    }
 }
