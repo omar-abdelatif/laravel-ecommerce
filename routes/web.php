@@ -2,14 +2,15 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminProfileController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\RegisteVendorController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\RegisteVendorController;
 use App\Http\Controllers\VendorProfileController;
 
 
@@ -34,7 +35,12 @@ Route::group(['prefix' => 'admin'], function () {
         //! Categories Routes
         Route::controller(CategoryController::class)->group(function () {
             Route::get('all_Categories', 'index')->name('admin.allCategories');
+            Route::post('add-category', 'store')->name('admin.categories.store');
+            Route::get('remove/{id}', 'destroy')->name('admin.categories.destroy');
+            Route::post('update', 'update')->name('admin.categories.update');
         });
+        //! Tags Routes
+        Route::controller(TagController::class)->group(function(){});
         //! User Routes
         Route::controller(UserController::class)->group(function () {
             Route::get('all_users', 'AdminUsers')->name('admin.users');
