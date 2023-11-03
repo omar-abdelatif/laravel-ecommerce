@@ -41,13 +41,19 @@
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                     </li>
                 </ul>
-                <ul class="header-nav ms-auto">
-
-                </ul>
+                <ul class="header-nav ms-auto"></ul>
                 <ul class="header-nav ms-3">
                     <li class="nav-item dropdown">
                         <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
+                            <div class="d-flex align-items-center">
+                                <img src="{{ auth()->user()->img ? asset("assets/admin/imgs/users/".auth()->user()->img) : 'https://placehold.co/150' }}" width="50" alt="{{auth()->user()->img}}" class="img-fluid rounded-circle text-center mx-auto">
+                                <div class="d-flex flex-column">
+                                    {{ Auth::user()->name }}
+                                    <small>
+                                        <b>{{Auth::user()->role}}</b>
+                                    </small>
+                                </div>
+                            </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end pt-0">
                             <a class="dropdown-item" href="{{ route('admin.profile.show') }}">

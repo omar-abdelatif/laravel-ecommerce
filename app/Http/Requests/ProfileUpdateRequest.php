@@ -13,7 +13,11 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'string', 'max:255', Rule::unique('users')->ignore(Auth::user())],
-            'password' => ['nullable', 'string', 'confirmed', 'min:8'],
+            'password' => ['nullable', 'string', 'min:8'],
+            'username' => ['required'],
+            'phone' => ['required', 'integer'],
+            'address' => ['required', 'string'],
+            'img' => ['image', 'mimes:png,jpg,jpg,webp', 'max:2048']
         ];
     }
 

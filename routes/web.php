@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin'], function () {
         //! Profile Routes
         Route::controller(AdminProfileController::class)->group(function () {
             Route::get('profile', 'show')->name('admin.profile.show');
-            Route::put('profile', 'update')->name('profile.update');
+            Route::put('profile', 'update')->name('admin.profile.update');
         });
         //! Categories Routes
         Route::controller(CategoryController::class)->group(function () {
