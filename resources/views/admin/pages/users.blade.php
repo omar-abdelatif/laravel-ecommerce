@@ -64,7 +64,7 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>
-                            <img src="{{$user->img}}" class="rounded-circle" width="50" alt="">
+                            <img src="{{(!empty($user->img)) ? asset('assets/admin/imgs/users/'.$user->img) : $user->img}}" class="rounded-circle" width="50" alt="">
                         </td>
                         <td>{{ $user->status }}</td>
                         <td>{{ $user->role }}</td>
@@ -83,7 +83,7 @@
                                 <a href="" class="btn btn-warning">
                                     <b>Edit</b>
                                 </a>
-                                <a href="" class="btn btn-danger">
+                                <a href="{{route('admin.delete',$user->id)}}" class="btn btn-danger">
                                     <b>Delete</b>
                                 </a>
                             @endif

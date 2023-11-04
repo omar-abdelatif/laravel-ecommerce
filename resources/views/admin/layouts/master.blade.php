@@ -47,7 +47,7 @@
                         <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             <div class="d-flex align-items-center">
                                 <img src="{{ auth()->user()->img ? asset("assets/admin/imgs/users/".auth()->user()->img) : 'https://placehold.co/150' }}" width="50" alt="{{auth()->user()->img}}" class="img-fluid rounded-circle text-center mx-auto">
-                                <div class="d-flex flex-column">
+                                <div class="d-flex flex-column ms-2">
                                     {{ Auth::user()->name }}
                                     <small>
                                         <b>{{Auth::user()->role}}</b>

@@ -24,7 +24,7 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::Admin;
 
     public function __construct()
     {
@@ -53,7 +53,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
             'address' => $data['address'],
-            'img' => 'default.png'
+            'img' => 'default.png',
+            'role' => 'admin',
+            'status' => 'active'
         ]);
     }
 }
