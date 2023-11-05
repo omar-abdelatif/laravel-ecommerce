@@ -18,6 +18,42 @@
     </li>
 
     <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.allCategories') }}">
+            <svg class="nav-icon">
+                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+            </svg>
+            {{ __('Products') }}
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.allCategories') }}">
+            <svg class="nav-icon">
+                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+            </svg>
+            {{ __('Invoices') }}
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.allCategories') }}">
+            <svg class="nav-icon">
+                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+            </svg>
+            {{ __('Vendors') }}
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.allCategories') }}">
+            <svg class="nav-icon">
+                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+            </svg>
+            {{ __('Orders') }}
+        </a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.users') }}">
             <svg class="nav-icon">
                 <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>

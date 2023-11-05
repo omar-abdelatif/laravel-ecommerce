@@ -70,22 +70,32 @@
                         <td>{{ $user->role }}</td>
                         <td>
                             @if ($user->role == 'vendor')
-                                <a href="" class="btn btn-warning">
-                                    <b>Edit</b>
-                                </a>
-                                <a href="{{route('admin.delete',$user->id)}}" class="btn btn-danger">
-                                    <b>Delete</b>
-                                </a>
-                                <a href="" class="btn btn-success">
-                                    <b>View</b>
-                                </a>
+                                <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa-solid fa-caret-down text-dark fa-xl"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a href="{{route('admin.delete',$user->id)}}" class="btn bg-danger dropdown-item mb-2 text-center">
+                                        <b>Delete</b>
+                                    </a>
+                                    <a href="" class="btn bg-warning dropdown-item text-center">
+                                        <b>Edit</b>
+                                    </a>
+                                    <a href="" class="btn bg-success dropdown-item text-center">
+                                        <b>View</b>
+                                    </a>
+                                </div>
                             @else
-                                <a href="" class="btn btn-warning">
-                                    <b>Edit</b>
-                                </a>
-                                <a href="{{route('admin.delete',$user->id)}}" class="btn btn-danger">
-                                    <b>Delete</b>
-                                </a>
+                                <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa-solid fa-caret-down text-dark fa-xl"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a href="{{route('admin.delete',$user->id)}}" class="btn bg-danger dropdown-item mb-2 text-center">
+                                        <b>Delete</b>
+                                    </a>
+                                    <a href="" class="btn bg-warning dropdown-item text-center">
+                                        <b>Edit</b>
+                                    </a>
+                                </div>
                             @endif
                         </td>
                     </tr>

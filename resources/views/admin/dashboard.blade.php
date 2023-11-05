@@ -40,7 +40,7 @@
                                     <use xlink:href="{{asset('icons/coreui.svg#cil-options')}}"></use>
                                 </svg>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-end" style="">
+                            <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>

@@ -41,7 +41,17 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('update', 'update')->name('admin.categories.update');
         });
         //! Tags Routes
-        Route::controller(TagController::class)->group(function(){});
+        Route::controller(TagController::class)->group(function () {});
+        //! Tags Routes
+        Route::controller(TagController::class)->group(function () {});
+        //! Tags Routes
+        Route::controller(TagController::class)->group(function () {});
+        //! Tags Routes
+        Route::controller(TagController::class)->group(function () {});
+        //! Tags Routes
+        Route::controller(TagController::class)->group(function () {});
+        //! Tags Routes
+        Route::controller(TagController::class)->group(function () {});
         //! User Routes
         Route::controller(UserController::class)->group(function () {
             Route::get('all_users', 'AdminUsers')->name('admin.users');

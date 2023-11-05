@@ -34,30 +34,25 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="col-md-6">
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
-                                        </label>
+                        <div class="row align-items-center justify-content-betwen">
+                            <div class="col-md-6">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary px-4 text-right" type="submit">{{ __('Login') }}</button>
+                            </div>
+                            <div class="col-12 w-100 text-center">
+                                @if (Route::has('password.request'))
+                                    <div class="text-end">
+                                        <a href="{{ route('password.request') }}" class="btn btn-link px-0" type="button">{{ __('Forgot Your Password?') }}</a>
                                     </div>
-                                </div>
+                                @endif
                             </div>
-                            <div class="col-6">
-                                <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
-                            </div>
-                            @if (Route::has('password.request'))
-                                <div class="col-6 text-end">
-                                    <a href="{{ route('password.request') }}" class="btn btn-link px-0" type="button">{{ __('Forgot Your Password?') }}</a>
-                                </div>
-                            @endif
                         </div>
                     </form>
                 </div>
