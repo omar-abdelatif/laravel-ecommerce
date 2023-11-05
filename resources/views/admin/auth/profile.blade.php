@@ -102,19 +102,6 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text">
                                 <svg class="icon">
-                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
-                                </svg>
-                            </span>
-                            <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="{{ __('New password') }}">
-                            @error('password')
-                                <span class="invalid-feedback">
-                                    {{ $message }}
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">
-                                <svg class="icon">
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-phone') }}"></use>
                                 </svg>
                             </span>

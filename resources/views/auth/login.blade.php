@@ -14,7 +14,7 @@
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
                                 </svg>
                             </span>
-                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" placeholder="{{ __('Email') }}" required autofocus>
+                            <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="{{ __('Email') }}" required autofocus>
                             @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -33,6 +33,21 @@
                                     {{ $message }}
                                 </div>
                             @enderror
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="col-md-6">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="remember">
+                                            {{ __('Remember Me') }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
