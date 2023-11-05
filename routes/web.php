@@ -14,7 +14,8 @@ use App\Http\Controllers\RegisteVendorController;
 use App\Http\Controllers\VendorProfileController;
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+// Auth::routes();
 
 Route::view('/', 'welcome');
 
@@ -22,7 +23,7 @@ Route::view('login', 'auth.login')->name('login');
 
 //! Admin Routes
 Route::group(['prefix' => 'admin'], function () {
-    Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::middleware(['auth', 'role:admin', 'verified'])->group(function () {
         //! Dashboard Routes
         Route::controller(AdminController::class)->group(function () {
             Route::get('dashboard', 'AdminDashboard')->name('admin.dashboard');
@@ -55,7 +56,7 @@ Route::group(['prefix' => 'vendor'], function () {
     Route::controller(RegisteVendorController::class)->group(function () {
         Route::get('register', 'index')->name('vendor.register');
     });
-    Route::middleware(['auth', 'role:vendor'])->group(function () {
+    Route::middleware(['auth', 'role:vendor', 'verified'])->group(function () {
         //! Dashboard Routes
         Route::controller(VendorController::class)->group(function () {
             Route::get('dashboard', 'VendorDashboard')->name('vendor.dashboard');
@@ -75,7 +76,7 @@ Route::group(['prefix' => 'vendor'], function () {
 });
 
 //! User Routes
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     //! Dashboard Routes
     Route::controller(DashboardController::class)->group(function(){
         Route::get('dashboard', 'index')->name('dashboard');

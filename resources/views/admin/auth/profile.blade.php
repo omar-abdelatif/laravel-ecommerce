@@ -22,7 +22,7 @@
 
 @section('admin')
     <div class="card mb-4">
-        <div class="card-header">
+        <div class="card-header mt-3 rounded">
             {{ __('My profile') }}
         </div>
         @if(session('success'))
@@ -45,46 +45,7 @@
             @method('PUT')
             <input type="hidden" name="id" value="{{ Auth::user()->id }}"/>
             <div class="row">
-                <div class="col-4">
-                    <div class="card-body bg-body-tertiary mt-3 rounded border border-3 border-dark">
-                        <div class="input-group mb-3 mt-3">
-                            <img src="{{ auth()->user()->img ? asset("assets/admin/imgs/users/".auth()->user()->img) : 'https://placehold.co/150' }}" width="130" alt="{{auth()->user()->img}}" class="img-fluid rounded-circle text-center mx-auto">
-                        </div>
-                        <div class="input-group mb-3 flex-column text-center">
-                            <h3 class="mb-0">{{auth()->user()->name}}</h3>
-                            <small>{{auth()->user()->email}}</small>
-                        </div>
-                        <hr>
-                        <div class="data">
-                            <div class="form-control mb-3">
-                                <span>
-                                    <i class="fa-solid fa-globe ps-2 pe-2"></i>
-                                    <b>Website:</b>
-                                </span>
-                                <span class="text-decoration-underline">{{auth()->user()->website}}</span>
-                            </div>
-                            <div class="form-control mb-3">
-                                <span>
-                                    <i class="fa-brands fa-facebook-f ps-2 pe-2"></i>
-                                    <b>Facebook:</b>
-                                </span>
-                                <span>
-                                    <span>{{auth()->user()->fb}}</span>
-                                </span>
-                            </div>
-                            <div class="form-control">
-                                <span>
-                                    <i class="fa-brands fa-whatsapp ps-2 pe-2"></i>
-                                    <b>Whatsapp:</b>
-                                </span>
-                                <span>
-                                    <span>{{auth()->user()->whatsapp}}</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-8">
+                <div class="col-lg-8">
                     <div class="card-body">
                         <div class="input-group mb-3">
                             <span class="input-group-text">
@@ -92,7 +53,7 @@
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
                                 </svg>
                             </span>
-                            <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" placeholder="{{ __('UserName') }}" value="{{ auth()->user()->username }}">
+                            <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" placeholder="{{ __('UserName') }}" value="{{ auth()->user()->username }}" disabled>
                             @error('username')
                                 <span class="invalid-feedback">
                                     {{ $message }}
@@ -131,7 +92,20 @@
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
                                 </svg>
                             </span>
-                            <input class="form-control @error('password') is-invalid @enderror" type="password" value="{{ old('password', auth()->user()->password) }}" name="password" placeholder="{{ __('New password') }}">
+                            <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="{{ __('New password') }}">
+                            @error('password')
+                                <span class="invalid-feedback">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="{{ __('New password') }}">
                             @error('password')
                                 <span class="invalid-feedback">
                                     {{ $message }}
@@ -182,9 +156,48 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4">
+                    <div class="card-body bg-body-tertiary mt-3 rounded border border-3 border-dark">
+                        <div class="input-group mb-3 mt-3">
+                            <img src="{{ auth()->user()->img ? asset("assets/admin/imgs/users/".auth()->user()->img) : 'https://placehold.co/150' }}" width="130" alt="{{auth()->user()->img}}" class="img-fluid rounded-circle text-center mx-auto">
+                        </div>
+                        <div class="input-group mb-3 flex-column text-center">
+                            <h3 class="mb-0">{{auth()->user()->name}}</h3>
+                            <small>{{auth()->user()->email}}</small>
+                        </div>
+                        <hr>
+                        <div class="data">
+                            <div class="form-control mb-3">
+                                <span>
+                                    <i class="fa-solid fa-globe ps-2 pe-2"></i>
+                                    <b>Website:</b>
+                                </span>
+                                <span class="text-decoration-underline">{{auth()->user()->website}}</span>
+                            </div>
+                            <div class="form-control mb-3">
+                                <span>
+                                    <i class="fa-brands fa-facebook-f ps-2 pe-2"></i>
+                                    <b>Facebook:</b>
+                                </span>
+                                <span>
+                                    <span>{{auth()->user()->fb}}</span>
+                                </span>
+                            </div>
+                            <div class="form-control">
+                                <span>
+                                    <i class="fa-brands fa-whatsapp ps-2 pe-2"></i>
+                                    <b>Whatsapp:</b>
+                                </span>
+                                <span>
+                                    <span>{{auth()->user()->whatsapp}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-12">
                     <div class="card-footer mt-4">
-                        <button class="btn btn-sm btn-primary" type="submit">{{ __('Submit') }}</button>
+                        <button class="btn btn-sm btn-primary w-100" type="submit">{{ __('Submit') }}</button>
                     </div>
                 </div>
             </div>

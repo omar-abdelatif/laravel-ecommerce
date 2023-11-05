@@ -12,14 +12,14 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::Home;
 
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
 
-    protected function authenticated(Request $request, $user)
+    protected function authenticated(Request $request)
     {
         $url = '';
         if ($request->user()->role === 'admin') {
