@@ -15,7 +15,7 @@
             </div>
         @endforeach
     @endif
-    <div class="info-box mt-5">
+    <div class="info-box mt-4">
         <div class="row">
             <div class="col-md-6 col-lg-3">
                 <div class="card mb-4 text-white bg-primary-gradient">
@@ -64,7 +64,7 @@
                                     )
                                 </span>
                             </div>
-                            <div>Users</div>
+                            <div>Vendors</div>
                         </div>
                         <div class="dropdown">
                             <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,7 +96,7 @@
                                     )
                                 </span>
                             </div>
-                            <div>Users</div>
+                            <div>Products</div>
                         </div>
                         <div class="dropdown">
                             <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -128,7 +128,7 @@
                                     )
                                 </span>
                             </div>
-                            <div>Users</div>
+                            <div>Orders</div>
                         </div>
                         <div class="dropdown">
                             <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -25,21 +25,6 @@
         <div class="card-header mt-3 rounded">
             {{ __('My profile') }}
         </div>
-        @if(session('success'))
-            <div class="alert alert-success mt-5 w-50 mx-auto text-center">
-                <p class="mb-0">
-                    <b>{{session('success')}}</b>
-                </p>
-            </div>
-        @elseif ($errors->any())
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger mt-3 w-50 mx-auto text-center">
-                    <p class="mb-0">
-                        <b>{{$error}}</b>
-                    </p>
-                </div>
-            @endforeach
-        @endif
         <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -47,19 +32,6 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card-body">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">
-                                <svg class="icon">
-                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
-                                </svg>
-                            </span>
-                            <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" placeholder="{{ __('UserName') }}" value="{{ auth()->user()->username }}" disabled>
-                            @error('username')
-                                <span class="invalid-feedback">
-                                    {{ $message }}
-                                </span>
-                            @enderror
-                        </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">
                                 <svg class="icon">

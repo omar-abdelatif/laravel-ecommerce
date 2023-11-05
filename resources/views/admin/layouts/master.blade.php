@@ -25,7 +25,7 @@
         <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
     </div>
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
-        <header class="header header-sticky mb-4 d-block">
+        <header class="header header-sticky d-block">
             <div class="container-fluid">
                 <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
                     <svg class="icon icon-lg">
@@ -95,5 +95,27 @@
     <script src="https://unpkg.com/@fortawesome/fontawesome-free@6.4.2/js/all.min.js"></script>
     <script src="https://unpkg.com/@coreui/coreui-pro@4.6.3/dist/js/coreui.bundle.js"></script>
     <script src="{{asset('assets/admin/js/custom.js')}}"></script>
+    <script>
+        @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type','info') }}"
+            switch(type){
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ");
+                    break; 
+            }
+        @endif 
+    </script>
 </body>
 </html>

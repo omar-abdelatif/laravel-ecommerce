@@ -42,8 +42,12 @@ class AdminProfileController extends Controller
             $user->phone = $request->phone;
             $user->address = $request->address;
             $update = $user->save();
+            $notification = [
+                'message' => 'Successfully Updated',
+                'alert-type' => 'success'
+            ];
             if ($update) {
-                return redirect()->route('admin.profile.show')->withSuccess('Successfully Updated');
+                return redirect()->route('admin.profile.show')->with($notification);
             }
             return redirect()->route('admin.profile.show')->withErrors('Error While Updating');
         }
