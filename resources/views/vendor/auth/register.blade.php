@@ -1,5 +1,10 @@
 @extends('layouts.guest')
 @section('content')
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <p class="mb-0 w-50 mx-auto text-center">{{$error}}</p>
+    @endforeach
+@endif
     <div class="col-12">
         <div class="card mb-4 mx-4">
             <div class="card-body p-4">

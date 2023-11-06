@@ -15,20 +15,23 @@ class Role
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-
-        if ($request->user()->role !== $role) {
-            return redirect('dashboard');
+        if ($request->user() && $request->user()->role !== $role) {
+            if ($request->user()->role === 'vendor') {
+                return redirect()->route('vendor.dashboard');
+            } elseif ($request->user()->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } else {
+                return redirect()->route('dashboard');
+            }
         }
-
         return $next($request);
     }
+
     // public function handle($request, Closure $next, $role)
     // {
     //     if (!$request->user() || !$request->user()->hasRole($role)) {
     //         return redirect('/dashboard'); // Redirect unauthorized users to the default dashboard route
     //     }
-
     //     return $next($request);
     // }
-
 }

@@ -1,6 +1,21 @@
 @extends('layouts.guest')
 
 @section('content')
+    @if(session('success'))
+        <div class="alert alert-success mt-5 w-50 mx-auto text-center">
+            <p class="mb-0">
+                <b>{{session('success')}}</b>
+            </p>
+        </div>
+    @elseif ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger mt-3 w-50 mx-auto text-center">
+                <p class="mb-0">
+                    <b>{{$error}}</b>
+                </p>
+            </div>
+        @endforeach
+    @endif
     <div class="col-lg-8">
         <div class="card-group d-block d-md-flex row">
             <div class="card col-md-7 p-4 mb-0">

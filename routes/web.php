@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('remove/{id}', 'destroy')->name('admin.categories.destroy');
             Route::post('update', 'update')->name('admin.categories.update');
         });
-        //! Tags Routes
+        //! Sub_Categories Routes
         Route::controller(TagController::class)->group(function () {});
         //! Tags Routes
         Route::controller(TagController::class)->group(function () {});
@@ -75,7 +75,7 @@ Route::group(['prefix' => 'vendor'], function () {
         //! Profile Routes
         Route::controller(VendorProfileController::class)->group(function () {
             Route::get('profile', 'show')->name('vendor.profile.show');
-            Route::put('profile', 'update')->name('profile.update');
+            Route::put('profile', 'update')->name('vendor.profile.update');
         });
         //! User Routes
         Route::controller(UserController::class)->group(function () {
@@ -87,20 +87,22 @@ Route::group(['prefix' => 'vendor'], function () {
 });
 
 //! User Routes
-Route::middleware(['auth', 'verified'])->group(function () {
-    //! Dashboard Routes
-    Route::controller(DashboardController::class)->group(function(){
-        Route::get('dashboard', 'index')->name('dashboard');
+Route::group(['prefix' => 'user'], function () {
+    Route::middleware(['auth', 'role:user', 'verified'])->group(function () {
+        //! Dashboard Routes
+        Route::controller(DashboardController::class)->group(function () {
+            Route::get('dashboard', 'index')->name('dashboard');
+        });
+        //! Profile Routes
+        Route::controller(ProfileController::class)->group(function () {
+            Route::get('profile', 'show')->name('profile.show');
+            Route::put('profile', 'update')->name('profile.update');
+        });
+        //! User Routes
+        Route::controller(UserController::class)->group(function () {
+            Route::view('users', 'users.index')->name('users.index');
+        });
+        //! About Routes
+        Route::view('about', 'about')->name('about');
     });
-    //! Profile Routes
-    Route::controller(ProfileController::class)->group(function(){
-        Route::get('profile', 'show')->name('profile.show');
-        Route::put('profile', 'update')->name('profile.update');
-    });
-    //! User Routes
-    Route::controller(UserController::class)->group(function(){
-        Route::view('users', 'users.index')->name('users.index');
-    });
-    //! About Routes
-    Route::view('about', 'about')->name('about');
 });

@@ -25,37 +25,11 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text">
                                     <svg class="icon">
-                                        <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
-                                    </svg>
-                                </span>
-                                <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" placeholder="{{ __('User Name') }}" required autocomplete="name" autofocus>
-                                @error('username')
-                                    <span class="invalid-feedback">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">
-                                    <svg class="icon">
                                         <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
                                     </svg>
                                 </span>
                                 <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" placeholder="{{ __('Email') }}" required autocomplete="email">
                                 @error('email')
-                                    <span class="invalid-feedback">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">
-                                    <svg class="icon">
-                                        <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
-                                    </svg>
-                                </span>
-                                <input class="form-control @error('address') is-invalid @enderror" type="text" name="address" placeholder="{{ __('address') }}" required autocomplete="address">
-                                @error('address')
                                     <span class="invalid-feedback">
                                         {{ $message }}
                                     </span>
@@ -83,19 +57,6 @@
                                     </svg>
                                 </span>
                                 <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">
-                                    <svg class="icon">
-                                        <use xlink:href="{{ asset('icons/coreui.svg#cil-phone') }}"></use>
-                                    </svg>
-                                </span>
-                                <input class="form-control @error('phone') is-invalid @enderror" type="number" name="phone" placeholder="{{ __('Phone') }}" required>
-                                @error('phone')
-                                    <span class="invalid-feedback">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
                             </div>
                         </div>
                         <div class="col-12">
