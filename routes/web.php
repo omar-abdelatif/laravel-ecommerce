@@ -65,6 +65,7 @@ Route::group(['prefix' => 'vendor'], function () {
     //! Auth Routes
     Route::controller(RegisteVendorController::class)->group(function () {
         Route::get('register', 'index')->name('vendor.register');
+        Route::post('register', 'vendorCreation')->name('vendor.store');
     });
     Route::middleware(['auth', 'role:vendor', 'verified'])->group(function () {
         //! Dashboard Routes

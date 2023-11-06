@@ -38,12 +38,7 @@
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
                                 </svg>
                             </span>
-                            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="{{ __('Name') }}" value="{{ old('name', auth()->user()->name) }}">
-                            @error('name')
-                                <span class="invalid-feedback">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                            <input class="form-control" type="text" name="name" placeholder="{{ __('Name') }}" value="{{ auth()->user()->name }}" disabled>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">
@@ -51,12 +46,7 @@
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
                                 </svg>
                             </span>
-                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}">
-                            @error('email')
-                                <span class="invalid-feedback">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                            <input class="form-control" type="text" name="email" placeholder="{{ __('Email') }}" value="{{ auth()->user()->email }}">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">
@@ -64,12 +54,7 @@
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
                                 </svg>
                             </span>
-                            <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="{{ __('New password') }}">
-                            @error('password')
-                                <span class="invalid-feedback">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                            <input class="form-control" type="password" name="password" placeholder="{{ __('New password') }}" autocomplete="off">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">
@@ -77,12 +62,7 @@
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-phone') }}"></use>
                                 </svg>
                             </span>
-                            <input class="form-control @error('phone') is-invalid @enderror" type="tel" name="phone" placeholder="{{ __('Phone') }}" value="{{ old('phone', auth()->user()->phone) }}">
-                            @error('phone')
-                                <span class="invalid-feedback">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                            <input class="form-control" type="tel" name="phone" placeholder="{{ __('Phone') }}" value="{{ auth()->user()->phone }}">
                         </div>
                         <div class="input-group">
                             <span class="input-group-text">
@@ -90,12 +70,7 @@
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-address-book') }}"></use>
                                 </svg>
                             </span>
-                            <input class="form-control @error('address') is-invalid @enderror" type="tel" name="address" placeholder="{{ __('Address') }}" value="{{ old('address', auth()->user()->address) }}">
-                            @error('address')
-                                <span class="invalid-feedback">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                            <input class="form-control" type="tel" name="address" placeholder="{{ __('Address') }}" value="{{ auth()->user()->address }}">
                         </div>
                         <div class="view-img text-center">
                             <img src="{{auth()->user()->img ? asset("assets/admin/imgs/".auth()->user()->img) : 'https://placehold.co/150'}}" width="130" class="rounded-circle" id="showImage" alt="">
@@ -106,12 +81,7 @@
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-image') }}"></use>
                                 </svg>
                             </span>
-                            <input class="form-control @error('img') is-invalid @enderror" id="image" type="file" name="img" value="{{ auth()->user()->img }}">
-                            @error('img')
-                                <span class="invalid-feedback">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                            <input class="form-control" id="image" type="file" name="img" value="{{ auth()->user()->img }}">
                         </div>
                     </div>
                 </div>

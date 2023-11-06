@@ -8,7 +8,7 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-lg-6">
                             <div class="input-group mb-3">
                                 <span class="input-group-text">
                                     <svg class="icon">
@@ -62,7 +62,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-lg-6">
                             <div class="input-group mb-3">
                                 <span class="input-group-text">
                                     <svg class="icon">

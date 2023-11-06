@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider
 {
     public const Home = 'admin/dashboard';
     public const Login = 'login';
-    // public const Vendor = 'vendor/dashboard';
+    public const Vendor = 'vendor/dashboard';
     // public const User = 'dashboard';
 
     public function boot(): void

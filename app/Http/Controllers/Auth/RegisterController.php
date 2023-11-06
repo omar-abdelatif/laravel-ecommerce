@@ -48,4 +48,31 @@ class RegisterController extends Controller
             'status' => 'active'
         ]);
     }
+
+    protected function vendorValidator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required', 'unique:users'],
+            'address' => ['required'],
+            'img' => ['image', 'max:2048', 'mime:jpg,png,jpeg,webp'],
+        ]);
+    }
+    protected function vendorCreation(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'img' => 'default.png',
+            'role' => 'vendor',
+            'status' => 'deactivated'
+        ]);
+    }
 }
