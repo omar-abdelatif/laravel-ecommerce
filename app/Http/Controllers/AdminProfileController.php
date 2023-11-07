@@ -20,7 +20,7 @@ class AdminProfileController extends Controller
         if ($user) {
             //! Delete Old Img
             if ($request->hasFile('img') && $user->img !== null) {
-                $oldPath = public_path('assets/admin/imgs/' . $user->img);
+                $oldPath = public_path('assets/admin/imgs/users/' . $user->img);
                 if (file_exists($oldPath)) {
                     unlink($oldPath);
                 }

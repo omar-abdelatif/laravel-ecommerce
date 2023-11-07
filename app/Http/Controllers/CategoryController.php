@@ -19,16 +19,11 @@ class CategoryController extends Controller
         ]);
         $store = Category::create($validated);
         if ($store) {
-            return redirect()->route('admin.allCategories')->withSuccess("Inserted successfully");
-        }
-        return redirect()->route('admin.allCategories')->withErrors($validated);
-    }
-    public function destroy($id)
-    {
-        $category = Category::find($id);
-        if ($category) {
-            $category->delete();
-            return redirect()->route('admin.allCategories')->withSuccess("Deleted successfully");
+            $notification = [
+                'message' => 'Inserted Successfully',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('admin.allCategories')->with($notification);
         }
         return redirect()->route('admin.allCategories')->withErrors('Error Happen');
     }
@@ -39,7 +34,26 @@ class CategoryController extends Controller
         if ($category) {
             $update = $category->update($request->all());
             if ($update) {
-                return redirect()->route('admin.allCategories')->withSuccess('Updated Successfully');
+                $notification = [
+                    'message' => 'Updated Successfully',
+                    'alert-type' => 'success'
+                ];
+                return redirect()->route('admin.allCategories')->with($notification);
+            }
+            return redirect()->route('admin.allCategories')->withErrors('Error Happen');
+        }
+    }
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+        if ($category) {
+            $delete = $category->delete();
+            if ($delete) {
+                $notification = [
+                    'message' => 'Deleted Successfully',
+                    'alert-type' => 'success'
+                ];
+                return redirect()->route('admin.allCategories')->with($notification);
             }
             return redirect()->route('admin.allCategories')->withErrors('Error Happen');
         }

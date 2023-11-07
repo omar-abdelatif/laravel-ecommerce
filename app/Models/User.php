@@ -13,7 +13,17 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'username',
+        'email',
+        'password',
+        'img',
+        'phone',
+        'address',
+        'role',
+        'status',
+    ];
 
     protected $hidden = [
         'password',

@@ -35,6 +35,10 @@ class RegisteVendorController extends Controller
             'status' => 'inactive'
         ]);
         if ($user) {
+            $notification = [
+                'message' => "Your account has been created successfully",
+                'alert-type' => 'success'
+            ];
             return redirect()->route('login')->withSuccess('Created Successfully');
         }
         return redirect()->route('login')->withErrors($validation);

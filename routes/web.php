@@ -2,20 +2,20 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RegisteVendorController;
 use App\Http\Controllers\VendorProfileController;
 
 
 Auth::routes(['verify' => true]);
-// Auth::routes();
 
 Route::view('/', 'welcome');
 
@@ -23,6 +23,10 @@ Route::view('login', 'auth.login')->name('login');
 
 //! Admin Routes
 Route::group(['prefix' => 'admin'], function () {
+    //! Register Routes
+    Route::controller(RegisterController::class)->group(function () {
+        Route::post('register', 'store')->name('admin.register');
+    });
     Route::middleware(['auth', 'role:admin', 'verified'])->group(function () {
         //! Dashboard Routes
         Route::controller(AdminController::class)->group(function () {
@@ -41,17 +45,11 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('update', 'update')->name('admin.categories.update');
         });
         //! Sub_Categories Routes
-        Route::controller(TagController::class)->group(function () {});
-        //! Tags Routes
-        Route::controller(TagController::class)->group(function () {});
-        //! Tags Routes
-        Route::controller(TagController::class)->group(function () {});
-        //! Tags Routes
-        Route::controller(TagController::class)->group(function () {});
-        //! Tags Routes
-        Route::controller(TagController::class)->group(function () {});
-        //! Tags Routes
-        Route::controller(TagController::class)->group(function () {});
+        Route::controller(SubCategoryController::class)->group(function () {
+            Route::get('all_subcategories', 'index')->name('admin.subCategories');
+            Route::post('add-subcategory', 'store')->name('admin.subCategories.store');
+            Route::get('destroy/{id}', 'destroy')->name('admin.subCategories.destroy');
+        });
         //! User Routes
         Route::controller(UserController::class)->group(function () {
             Route::get('all_users', 'AdminUsers')->name('admin.users');

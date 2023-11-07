@@ -26,12 +26,4 @@ class Role
         }
         return $next($request);
     }
-
-    // public function handle($request, Closure $next, $role)
-    // {
-    //     if (!$request->user() || !$request->user()->hasRole($role)) {
-    //         return redirect('/dashboard'); // Redirect unauthorized users to the default dashboard route
-    //     }
-    //     return $next($request);
-    // }
 }

@@ -94,7 +94,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://unpkg.com/@fortawesome/fontawesome-free@6.4.2/js/all.min.js"></script>
     <script src="https://unpkg.com/@coreui/coreui-pro@4.6.3/dist/js/coreui.bundle.js"></script>
-    <script src="{{asset('assets/vendor/js/custom.js')}}"></script>
     <script>
         @if(Session::has('message'))
             var type = "{{ Session::get('alert-type','info') }}"
@@ -117,5 +116,6 @@
             }
         @endif 
     </script>
+    <script src="{{asset('assets/vendor/js/custom.js')}}"></script>
 </body>
 </html>
