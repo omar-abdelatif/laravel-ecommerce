@@ -52,6 +52,10 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('destroy/{id}', 'destroy')->name('admin.subCategories.destroy');
             Route::post('update', 'update')->name('admin.subCategories.update');
         });
+        //! Vendor Routes
+        Route::controller(VendorController::class)->group(function(){
+            Route::get('vendor_list', 'listIndex')->name('admin.vendorsList');
+        });
         //! User Routes
         Route::controller(UserController::class)->group(function () {
             Route::get('all_users', 'AdminUsers')->name('admin.users');

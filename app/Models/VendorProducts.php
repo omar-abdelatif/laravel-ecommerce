@@ -10,7 +10,15 @@ class VendorProducts extends Model
     use HasFactory;
 
     protected $table = 'vendor_products';
-    protected $fillable = [];
+    protected $fillable = [
+        'title',
+        'description',
+        'price',
+        'image',
+        'status',
+        'reviews',
+        'vendor_id'
+    ];
     public function asdasd(){}
     public function asdasda(){}
 }

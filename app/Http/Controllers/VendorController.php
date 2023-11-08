@@ -9,8 +9,9 @@ class VendorController extends Controller
     public function VendorDashboard(){
         return view('vendor.dashboard');
     }
-    public function vendorRegister(Request $request)
+    public function listIndex()
     {
-
+        return view('admin.pages.vendors');
     }
+    public function storeVendor(Request $request){}
 }
