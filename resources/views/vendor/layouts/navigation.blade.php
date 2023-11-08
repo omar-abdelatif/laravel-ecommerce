@@ -8,6 +8,15 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('vendor.products') }}">
+            <svg class="nav-icon">
+                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+            </svg>
+            {{ __('Products') }}
+        </a>
+    </li>
+
     {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('users.index') }}">
             <svg class="nav-icon">

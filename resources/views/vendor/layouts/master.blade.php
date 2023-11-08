@@ -47,7 +47,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             <div class="d-flex align-items-center">
-                                <img src="{{ auth()->user()->img ? asset("assets/vendors/imgs/users/".auth()->user()->img) : 'https://placehold.co/150' }}" width="50" alt="{{auth()->user()->img}}" class="img-fluid rounded-circle text-center mx-auto">
+                                <img src="{{ auth()->user()->img ? asset("assets/vendor/imgs/users/".auth()->user()->img) : 'https://placehold.co/150' }}" width="50" alt="{{auth()->user()->img}}" class="img-fluid rounded-circle text-center mx-auto">
                                 <div class="d-flex flex-column ms-2">
                                     {{ Auth::user()->name }}
                                     <small>
@@ -57,7 +57,7 @@
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end pt-0">
-                            <a class="dropdown-item" href="{{ route('admin.profile.show') }}">
+                            <a class="dropdown-item" href="{{ route('vendor.profile.show') }}">
                                 <svg class="icon me-2">
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
                                 </svg>

@@ -12,6 +12,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RegisteVendorController;
+use App\Http\Controllers\VendorProductsController;
 use App\Http\Controllers\VendorProfileController;
 
 
@@ -75,6 +76,10 @@ Route::group(['prefix' => 'vendor'], function () {
         Route::controller(VendorProfileController::class)->group(function () {
             Route::get('profile', 'show')->name('vendor.profile.show');
             Route::put('profile', 'update')->name('vendor.profile.update');
+        });
+        //! Products Routes
+        Route::controller(VendorProductsController::class)->group(function () {
+            Route::get('all_products', 'index')->name('vendor.products');
         });
         //! User Routes
         Route::controller(UserController::class)->group(function () {

@@ -21,7 +21,7 @@
 @endsection
 
 @section('admin')
-    <div class="card mb-4">
+    <div class="card mb-4 mt-4">
         <div class="card-header mt-3 rounded">
             {{ __('My profile') }}
         </div>

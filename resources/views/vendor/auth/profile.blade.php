@@ -1,135 +1,134 @@
 @extends('vendor.layouts.master')
 
 @section('header')
-    <header class="header header-sticky mb-4 d-block">
+    <div class="header-divider"></div>
+    <section class="content-header">
         <div class="container-fluid">
-            <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
-                <svg class="icon icon-lg">
-                    <use xlink:href="{{ asset('icons/coreui.svg#cil-menu') }}"></use>
-                </svg>
-            </button>
-            <a class="header-brand d-md-none" href="#">
-                <svg width="118" height="46" alt="CoreUI Logo">
-                    <use xlink:href="{{ asset('icons/brand.svg#full') }}"></use>
-                </svg>
-            </a>
-            <ul class="header-nav d-none d-md-flex">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('vendor.dashboard') }}">Dashboard</a>
-                </li>
-            </ul>
-            <ul class="header-nav ms-auto"></ul>
-            <ul class="header-nav ms-3">
-                <li class="nav-item dropdown">
-                    <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        {{ Auth::user()->name }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end pt-0">
-                        <a class="dropdown-item" href="{{ route('vendor.profile.show') }}">
-                            <svg class="icon me-2">
-                                <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
-                            </svg>
-                            {{ __('My profile') }}
-                        </a>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-                                <svg class="icon me-2">
-                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-account-logout') }}"></use>
-                                </svg>
-                                {{ __('Logout') }}
-                            </a>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="header-divider"></div>
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 w-100">
-                        <div class="w-100 d-flex align-items-baseline justify-content-between mt-2">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="{{ route('vendor.dashboard') }}">Dashboard</a>
-                                </li>
-                                <li class="breadcrumb-item active">Profile</li>
-                            </ol>
-                        </div>
+            <div class="row">
+                <div class="col-12 w-100">
+                    <div class="w-100 d-flex align-items-baseline justify-content-between mt-2">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('vendor.dashboard') }}">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item active">Profile</li>
+                        </ol>
                     </div>
                 </div>
             </div>
-        </section>
-    </header>
+        </div>
+    </section>
 @endsection
 
 @section('vendor')
-    <div class="card mb-4">
-        <div class="card-header">
+    <div class="card mb-4 mt-4">
+        <div class="card-header mt-3 rounded">
             {{ __('My profile') }}
         </div>
-
-        <form action="{{ route('profile.update') }}" method="POST">
+        <form action="{{ route('vendor.profile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-
-            <div class="card-body">
-
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success" role="alert">{{ $message }}</div>
-                @endif
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text">
-                        <svg class="icon">
-                            <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
-                        </svg>
-                    </span>
-                    <input class="form-control" type="text" name="name" placeholder="{{ __('Name') }}" value="{{ old('name', auth()->user()->name) }}" required>
-                    @error('name')
-                        <span class="invalid-feedback">
-                            {{ $message }}
-                        </span>
-                    @enderror
+            <input type="hidden" name="id" value="{{ Auth::user()->id }}"/>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control" type="text" name="name" placeholder="{{ __('Name') }}" value="{{ auth()->user()->name }}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control" type="text" name="email" placeholder="{{ __('Email') }}" value="{{ auth()->user()->email }}">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control" type="password" name="password" placeholder="{{ __('New password') }}" autocomplete="off">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-phone') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control" type="tel" name="phone" placeholder="{{ __('Phone') }}" value="{{ auth()->user()->phone }}">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-address-book') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control" type="tel" name="address" placeholder="{{ __('Address') }}" value="{{ auth()->user()->address }}">
+                        </div>
+                        <div class="view-img text-center">
+                            <img src="{{auth()->user()->img ? asset("assets/vendor/imgs/".auth()->user()->img) : 'https://placehold.co/150'}}" width="130" class="rounded-circle" id="showImage" alt="">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-image') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control" id="image" type="file" name="img" value="{{ auth()->user()->img }}">
+                        </div>
+                    </div>
                 </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text">
-                        <svg class="icon">
-                            <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
-                        </svg>
-                    </span>
-                    <input class="form-control" type="text" name="email" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" required>
-                    @error('email')
-                        <span class="invalid-feedback">
-                            {{ $message }}
-                        </span>
-                    @enderror
+                <div class="col-lg-4">
+                    <div class="card-body bg-body-tertiary mt-3 rounded border border-3 border-dark">
+                        <div class="input-group mb-3 mt-3">
+                            <img src="{{ auth()->user()->img ? asset("assets/vendor/imgs/users/".auth()->user()->img) : 'https://placehold.co/150' }}" width="130" alt="{{auth()->user()->img}}" class="img-fluid rounded-circle text-center mx-auto">
+                        </div>
+                        <div class="input-group mb-3 flex-column text-center">
+                            <h3 class="mb-0">{{auth()->user()->name}}</h3>
+                            <small>{{auth()->user()->email}}</small>
+                        </div>
+                        <hr>
+                        <div class="data">
+                            <div class="form-control mb-3">
+                                <span>
+                                    <i class="fa-solid fa-globe ps-2 pe-2"></i>
+                                    <b>Website:</b>
+                                </span>
+                                <span class="text-decoration-underline">{{auth()->user()->website}}</span>
+                            </div>
+                            <div class="form-control mb-3">
+                                <span>
+                                    <i class="fa-brands fa-facebook-f ps-2 pe-2"></i>
+                                    <b>Facebook:</b>
+                                </span>
+                                <span>
+                                    <span>{{auth()->user()->fb}}</span>
+                                </span>
+                            </div>
+                            <div class="form-control">
+                                <span>
+                                    <i class="fa-brands fa-whatsapp ps-2 pe-2"></i>
+                                    <b>Whatsapp:</b>
+                                </span>
+                                <span>
+                                    <span>{{auth()->user()->whatsapp}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text">
-                        <svg class="icon">
-                            <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
-                        </svg>
-                    </span>
-                    <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="{{ __('New password') }}" required>
-                    @error('password')
-                        <span class="invalid-feedback">
-                            {{ $message }}
-                        </span>
-                    @enderror
+                <div class="col-12">
+                    <div class="card-footer mt-4">
+                        <button class="btn btn-sm btn-primary w-100" type="submit">{{ __('Submit') }}</button>
+                    </div>
                 </div>
-                <div class="input-group mb-4"><span class="input-group-text">
-                    <svg class="icon">
-                        <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
-                    </svg></span>
-                    <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password" name="password_confirmation" placeholder="{{ __('New password confirmation') }}" required>
-                </div>
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-sm btn-primary" type="submit">{{ __('Submit') }}</button>
             </div>
         </form>
     </div>
