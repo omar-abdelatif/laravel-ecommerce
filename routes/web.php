@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('all_subcategories', 'index')->name('admin.subCategories');
             Route::post('add-subcategory', 'store')->name('admin.subCategories.store');
             Route::get('destroy/{id}', 'destroy')->name('admin.subCategories.destroy');
+            Route::post('update', 'update')->name('admin.subCategories.update');
         });
         //! User Routes
         Route::controller(UserController::class)->group(function () {

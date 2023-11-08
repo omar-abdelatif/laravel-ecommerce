@@ -47,7 +47,21 @@ class SubCategoryController extends Controller
         $id = $request->id;
         $sub = SubCategory::find($id);
         if ($sub) {
+            $update = $sub->update($request->all());
+            
+            if ($update) {
+                $notification = [
+                    'message' => 'Updated Successfully',
+                    'alert-type' => 'success'
+                ];
+                return redirect()->route('admin.subCategories')->with($notification);
+            }
         }
+        $notificationError = [
+            'message' => 'Check your Inputs',
+            'alert-type' => 'error',
+        ];
+        return redirect()->route('admin.subCategories')->with($notificationError);
     }
     public function destroy($id)
     {
@@ -61,11 +75,11 @@ class SubCategoryController extends Controller
                 ];
                 return redirect()->route('admin.subCategories')->with($notification);
             }
-            $notificationError = [
-                'message' => 'Check your Inputs',
-                'alert-type' => 'error',
-            ];
-            return redirect()->route('admin.subCategories')->with($notificationError);
         }
+        $notificationError = [
+            'message' => 'Check your Inputs',
+            'alert-type' => 'error',
+        ];
+        return redirect()->route('admin.subCategories')->with($notificationError);
     }
 }

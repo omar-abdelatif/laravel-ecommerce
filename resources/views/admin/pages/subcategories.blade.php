@@ -89,10 +89,45 @@
                                     <i class="fa-solid fa-pen"></i>
                                 </b>
                             </button>
+                            <div class="modal fade" id="edit_categories{{$sub->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-dark">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-white" id="exampleModalLabel">Edit Category {{$sub->title}}</h5>
+                                            <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body bg-dark text-white">
+                                            <form action="{{route('admin.subCategories.update')}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$sub->id}}">
+                                                <div class="form-group mt-3">
+                                                    <label for="region" class="text-white">
+                                                        <b>Category Name</b>
+                                                    </label>
+                                                    <select name="category_name" id="region" class="form-control text-center">
+                                                        <option value="0" selected>-- Choose Category --</option>
+                                                        @foreach ($allcategories as $cat)
+                                                            <option value="{{$cat->title}}" {{$cat->title == $sub->category_name ? 'selected' : ''}}>{{$cat->title}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group text-center mb-3">
+                                                    <label for="title" class="mb-2">
+                                                        <b class="text-white">Title</b>
+                                                    </label>
+                                                    <input type="text" name="title" id="title" class="form-control text-center" value="{{$sub->title}}">
+                                                </div>
+                                                <button type="submit" class="btn btn-success w-100 mt-3 text-center text-white">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             {{-- ! Delete ! --}}
                             <a href="{{route('admin.subCategories.destroy', $sub->id)}}" class="btn btn-danger">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
+                            {{--  --}}
                         </td>
                     </tr>
                 @endforeach
