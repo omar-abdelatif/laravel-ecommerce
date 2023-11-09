@@ -8,13 +8,39 @@
         </a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.vendorsList') }}">
+    <li class="nav-group" aria-expanded="false">
+        <a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
                 <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
             </svg>
             {{ __('Vendors') }}
         </a>
+        <ul class="nav-group-items" style="height: 0px;">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.vendorsList') }}" target="_top">
+                    <svg class="nav-icon">
+                        <use xlink:href="{{ asset('icons/coreui.svg#cil-bug') }}"></use>
+                    </svg>
+                    {{ __('All Vendors') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.active.vendor') }}" target="_top">
+                    <svg class="nav-icon">
+                        <use xlink:href="{{ asset('icons/coreui.svg#cil-bug') }}"></use>
+                    </svg>
+                    {{ __('Active Vendors') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.inactive.vendor') }}" target="_top">
+                    <svg class="nav-icon">
+                        <use xlink:href="{{ asset('icons/coreui.svg#cil-bug') }}"></use>
+                    </svg>
+                    {{ __('InActive Vendors') }}
+                </a>
+            </li>
+        </ul>
     </li>
 
     <li class="nav-item">
@@ -53,14 +79,7 @@
         </a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.allCategories') }}">
-            <svg class="nav-icon">
-                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
-            </svg>
-            {{ __('Vendors') }}
-        </a>
-    </li>
+    
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.allCategories') }}">

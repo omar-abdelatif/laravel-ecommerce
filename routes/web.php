@@ -55,6 +55,9 @@ Route::group(['prefix' => 'admin'], function () {
         //! Vendor Routes
         Route::controller(VendorController::class)->group(function(){
             Route::get('vendor_list', 'listIndex')->name('admin.vendorsList');
+            Route::get('vendor_inactive', 'inactiveVendor')->name('admin.inactive.vendor');
+            Route::get('vendor_active', 'activeVendor')->name('admin.active.vendor');
+            Route::get('vendor_destroy/{id}', 'destroy')->name('admin.vendor.destroy');
         });
         //! User Routes
         Route::controller(UserController::class)->group(function () {

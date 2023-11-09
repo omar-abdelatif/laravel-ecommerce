@@ -27,7 +27,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Vendor</h5>
                     <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body bg-dark text-white">
@@ -64,6 +64,7 @@
                     <th class="text-center">Address</th>
                     <th class="text-center">Phone</th>
                     <th class="text-center">Image</th>
+                    <th class="text-center">Status</th>
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
