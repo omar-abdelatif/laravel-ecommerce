@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{route('admin.vendor.details', $item->id)}}" class="btn btn-success">
+                            <a href="{{route('admin.active.vendor.details', $item->id)}}" class="btn btn-success">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
                         </td>

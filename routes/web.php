@@ -58,7 +58,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('vendor_inactive', 'inactiveVendor')->name('admin.inactive.vendor');
             Route::get('vendor_active', 'activeVendor')->name('admin.active.vendor');
             Route::get('vendor_destroy/{id}', 'destroy')->name('admin.vendor.destroy');
-            Route::get('vendor_inactive/vendor_details/{id}', 'vendorDetails')->name('admin.vendor.details');
+            Route::get('vendor_active/vendor_details/{id}', 'vendorDetails')->name('admin.active.vendor.details');
+            Route::post('vendor_active/vendor_details/vendor_disapprove', 'disApprove')->name('admin.vendor.disApprove');
+            Route::get('vendor_inactive/vendor_details/{id}', 'vendorDetails')->name('admin.inactive.vendor.details');
             Route::post('vendor_inactive/vendor_details/vendor_approve', 'approveVendor')->name('admin.vendor.approve');
         });
         //! User Routes

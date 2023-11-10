@@ -68,6 +68,36 @@
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
+            <tbody>
+                @foreach ($vendors as $vendor)
+                    <tr>
+                        <td>{{$i++}}</td>
+                        <td>{{$vendor->name}}</td>
+                        <td>{{$vendor->address}}</td>
+                        <td>{{$vendor->phone}}</td>
+                        <td>
+                            <img src="{{asset('assets/vendor/imgs/users/'.$vendor->img)}}" alt="{{$vendor->img}}" class="rounded-circle" width="50px" height="auto">
+                        </td>
+                        <td>
+                            @if ($vendor->status === 'active')
+                                <span class="badge text-bg-success px-3 py-2">{{$vendor->status}}</span>
+                            @elseif ($vendor->status === 'inactive')
+                                <span class="badge text-bg-danger px-3 py-2">{{$vendor->status}}</span>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{route('admin.inactive.vendor.details', $vendor->id)}}" class="btn btn-success">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            {{-- @if ($vendor->status === 'active')
+                                <span class="badge text-bg-success px-3 py-2">{{$vendor->status}}</span>
+                            @elseif ($vendor->status === 'inactive')
+                                <span class="badge text-bg-danger px-3 py-2">{{$vendor->status}}</span>
+                            @endif --}}
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
         </table>
     </div>
 @endsection

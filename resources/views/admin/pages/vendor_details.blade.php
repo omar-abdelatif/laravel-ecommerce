@@ -10,9 +10,15 @@
                             <li class="breadcrumb-item">
                                 <a href="{{ route('admin.dashboard') }}">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('admin.inactive.vendor') }}">InActive Vendors</a>
-                            </li>
+                            @if ($details->status === 'active')
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('admin.active.vendor') }}">Active Vendors</a>
+                                </li>
+                            @elseif ($details->status === 'inactive')
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('admin.inactive.vendor') }}">InActive Vendors</a>
+                                </li>
+                            @endif
                             <li class="breadcrumb-item active">{{$details->name}}</li>
                         </ol>
                     </div>
@@ -25,10 +31,18 @@
     <div class="card mb-4 mt-4">
         <div class="card-header mt-3 rounded">
             <h1 class="text-center">
-                {{ __('InActive Vendor Details') }}
+                @if ($details->status === 'inactive')
+                    {{ $details->name.' Details' }}
+                @elseif ($details->status === 'active')
+                    {{ $details->name.' Details' }}
+                @endif
             </h1>
         </div>
-        <form action="{{route('admin.vendor.approve')}}" method="POST" enctype="multipart/form-data">
+        @if ($details->status === 'inactive')
+            <form action="{{route('admin.vendor.approve')}}" method="POST" enctype="multipart/form-data">
+        @elseif ($details->status === 'active')
+            <form action="{{route('admin.vendor.disApprove')}}" method="POST" enctype="multipart/form-data">
+        @endif
             @csrf
             <input type="hidden" name="id" value="{{ $details->id }}"/>
             <div class="row">
@@ -129,13 +143,18 @@
                 <div class="col-12">
                     <div class="card-footer mt-4">
                         @if ($details->status === 'inactive')
-                            <button class="btn btn-danger w-100" type="submit">
+                            <button class="btn btn-danger w-100">
                                 <b>{{ __('Active Vendor') }}</b>
                             </button>
                         @elseif ($details->status === 'active')
-                            <button class="btn btn-success w-100" type="submit">
-                                <b>{{ __('Activated') }}</b>
-                            </button>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-success w-100 mx-3">
+                                    <b>{{ __('Activated') }}</b>
+                                </button>
+                                <button class="btn btn-danger w-100 mx-3" type="submit">
+                                    <b>{{ __('InActive Vendor !!') }}</b>
+                                </button>
+                            </div>
                         @endif
                     </div>
                 </div>

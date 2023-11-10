@@ -38,6 +38,14 @@
                                     <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
                                 </svg>
                             </span>
+                            <input class="form-control" type="text" name="username" placeholder="{{ __('UserName') }}" value="{{ auth()->user()->username }}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
+                                </svg>
+                            </span>
                             <input class="form-control" type="text" name="name" placeholder="{{ __('Name') }}" value="{{ auth()->user()->name }}" readonly>
                         </div>
                         <div class="input-group mb-3">

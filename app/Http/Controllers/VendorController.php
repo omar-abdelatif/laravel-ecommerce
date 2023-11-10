@@ -12,7 +12,8 @@ class VendorController extends Controller
     }
     public function listIndex()
     {
-        return view('admin.pages.vendors');
+        $vendors = User::where(['role' => 'vendor'])->get();
+        return view('admin.pages.vendors', compact('vendors'));
     }
     public function inactiveVendor()
     {
@@ -66,7 +67,29 @@ class VendorController extends Controller
                     'message' => "Vendor Activated Successfully",
                     'alert-type' => 'success'
                 ];
-                return redirect()->back()->with($notification);
+                return redirect()->route('admin.inactive.vendor')->with($notification);
+            }
+        }
+        $notification = [
+            'message' => "Something went wrong, please try again...!!!",
+            'alert-type' => 'error'
+        ];
+        return redirect()->back()->with($notification);
+    }
+    public function disApprove(Request $request)
+    {
+        $vendorId = $request->id;
+        $vendor = User::findOrFail($vendorId);
+        if ($vendor) {
+            $update = $vendor->update([
+                'status' => 'inactive'
+            ]);
+            if ($update) {
+                $notification = [
+                    'message' => "Vendor Disapproved Successfully",
+                    'alert-type' => 'danger'
+                ];
+                return redirect()->route('admin.active.vendor')->with($notification);
             }
         }
         $notification = [
