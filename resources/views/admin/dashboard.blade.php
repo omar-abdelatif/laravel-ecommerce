@@ -163,7 +163,53 @@
                 <b>Vendors Table</b>
             </h3>
         </div>
-        <div class="card-body"></div>
+        <div class="card-body">
+            <table class="table text-center align-middle table-striped table-hover" id="table"  data-order='[[ 0, "asc" ]]' data-page-length='10'>
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Shop Name</th>
+                        <th class="text-center">Address</th>
+                        <th class="text-center">Phone</th>
+                        <th class="text-center">Image</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i =1 ?>
+                    @foreach ($vendors as $vendor)
+                        <tr>
+                            <td>{{$i++}}</td>
+                            <td>{{$vendor->name}}</td>
+                            <td>{{$vendor->address}}</td>
+                            <td>{{$vendor->phone}}</td>
+                            <td>
+                                <img src="{{asset('assets/vendor/imgs/users/'.$vendor->img)}}" alt="{{$vendor->img}}" class="rounded-circle" width="50px" height="auto">
+                            </td>
+                            <td>
+                                @if ($vendor->status === 'active')
+                                    <span class="badge text-bg-success px-3 py-2">{{$vendor->status}}</span>
+                                @elseif ($vendor->status === 'inactive')
+                                    <span class="badge text-bg-danger px-3 py-2">{{$vendor->status}}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($vendor->status === 'active')
+                                    <a href="{{route('admin.active.vendor.details', $vendor->id)}}" class="btn btn-success">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                @elseif ($vendor->status === 'inactive')
+                                    <a href="{{route('admin.inactive.vendor.details', $vendor->id)}}" class="btn btn-success">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
     {{-- ! Products Table ! --}}
     <div class="card mb-3">

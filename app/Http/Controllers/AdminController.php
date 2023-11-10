@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function AdminDashboard(){
-        return view('admin.dashboard');
+        $vendors = User::where(['role' => 'vendor'])->get();
+        return view('admin.dashboard', compact('vendors'));
     }
 }

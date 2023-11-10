@@ -1,31 +1,36 @@
+@php
+    $id= Auth::user()->id;
+    $vendorId = App\Models\User::find($id);
+    $status = $vendorId->status;
+@endphp
 <ul class="sidebar-nav" data-coreui="navigation" data-simplebar>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('vendor.dashboard') }}">
-            <svg class="nav-icon">
-                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
-            </svg>
-            {{ __('Dashboard') }}
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('vendor.products') }}">
-            <svg class="nav-icon">
-                <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
-            </svg>
-            {{ __('Products') }}
-        </a>
-    </li>
-
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="{{ route('users.index') }}">
-            <svg class="nav-icon">
-                <use xlink:href="{{ asset('icons/coreui.svg#cil-user') }}"></use>
-            </svg>
-            {{ __('Users') }}
-        </a>
-    </li> --}}
-
+    @if ($status === 'inactive')
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('vendor.dashboard') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+                </svg>
+                {{ __('Dashboard') }}
+            </a>
+        </li>
+    @else
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('vendor.dashboard') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+                </svg>
+                {{ __('Dashboard') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('vendor.products') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('icons/coreui.svg#cil-speedometer') }}"></use>
+                </svg>
+                {{ __('Products') }}
+            </a>
+        </li>
+    @endif
     {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('about') }}">
             <svg class="nav-icon">
@@ -34,7 +39,6 @@
             {{ __('About us') }}
         </a>
     </li> --}}
-
     {{-- <li class="nav-group" aria-expanded="false">
         <a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
