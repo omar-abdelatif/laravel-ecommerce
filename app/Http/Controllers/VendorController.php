@@ -24,7 +24,6 @@ class VendorController extends Controller
         $data = User::where(['role' => 'vendor', 'status' => 'active'])->get();
         return view('admin.pages.active_vendors', compact('data'));
     }
-    public function storeVendor(Request $request){}
     public function destroy($id)
     {
         $vendor = User::find($id);
@@ -47,5 +46,33 @@ class VendorController extends Controller
             'message' => "Something went wrong, please try again...!!!",
             'alert-type' => 'error'
         ];
+        return redirect()->back()->with($notification);
+    }
+    public function vendorDetails($id)
+    {
+        $details = User::findOrFail($id);
+        return view('admin.pages.vendor_details', compact('details'));
+    }
+    public function approveVendor(Request $request)
+    {
+        $vendorId = $request->id;
+        $vendor = User::findOrFail($vendorId);
+        if ($vendor) {
+            $update = $vendor->update([
+                'status' => 'active'
+            ]);
+            if ($update) {
+                $notification = [
+                    'message' => "Vendor Activated Successfully",
+                    'alert-type' => 'success'
+                ];
+                return redirect()->back()->with($notification);
+            }
+        }
+        $notification = [
+            'message' => "Something went wrong, please try again...!!!",
+            'alert-type' => 'error'
+        ];
+        return redirect()->back()->with($notification);
     }
 }

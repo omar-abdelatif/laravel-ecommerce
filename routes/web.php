@@ -40,17 +40,17 @@ Route::group(['prefix' => 'admin'], function () {
         });
         //! Categories Routes
         Route::controller(CategoryController::class)->group(function () {
-            Route::get('all_Categories', 'index')->name('admin.allCategories');
+            Route::get('all_categories', 'index')->name('admin.allCategories');
             Route::post('add-category', 'store')->name('admin.categories.store');
-            Route::get('remove/{id}', 'destroy')->name('admin.categories.destroy');
-            Route::post('update', 'update')->name('admin.categories.update');
+            Route::get('cat_remove/{id}', 'destroy')->name('admin.categories.destroy');
+            Route::post('cat_update', 'update')->name('admin.categories.update');
         });
         //! Sub_Categories Routes
         Route::controller(SubCategoryController::class)->group(function () {
             Route::get('all_subcategories', 'index')->name('admin.subCategories');
             Route::post('add-subcategory', 'store')->name('admin.subCategories.store');
-            Route::get('destroy/{id}', 'destroy')->name('admin.subCategories.destroy');
-            Route::post('update', 'update')->name('admin.subCategories.update');
+            Route::get('subcat_destroy/{id}', 'destroy')->name('admin.subCategories.destroy');
+            Route::post('subcat_update', 'update')->name('admin.subCategories.update');
         });
         //! Vendor Routes
         Route::controller(VendorController::class)->group(function(){
@@ -58,6 +58,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('vendor_inactive', 'inactiveVendor')->name('admin.inactive.vendor');
             Route::get('vendor_active', 'activeVendor')->name('admin.active.vendor');
             Route::get('vendor_destroy/{id}', 'destroy')->name('admin.vendor.destroy');
+            Route::get('vendor_inactive/vendor_details/{id}', 'vendorDetails')->name('admin.vendor.details');
+            Route::post('vendor_inactive/vendor_details/vendor_approve', 'approveVendor')->name('admin.vendor.approve');
         });
         //! User Routes
         Route::controller(UserController::class)->group(function () {

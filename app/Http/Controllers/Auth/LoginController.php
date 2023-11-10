@@ -29,6 +29,10 @@ class LoginController extends Controller
         } else {
             $url = 'dashboard';
         }
-        return redirect()->intended($url);
+        $notification = [
+            'message' => "Loggedin Successfully",
+            'alert-type' => 'success',
+        ];
+        return redirect()->intended($url)->with($notification);
     }
 }

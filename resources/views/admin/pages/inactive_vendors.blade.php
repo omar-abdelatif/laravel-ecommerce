@@ -44,7 +44,11 @@
                             <img src="{{asset('assets/vendor/imgs/users/'.$item->img)}}" alt="{{$item->img}}" class="rounded-circle" width="50px" height="auto">
                         </td>
                         <td>
-                            <span class="badge text-bg-danger">{{$item->status}}</span>
+                            @if ($item->status === 'active')
+                                <span class="badge text-bg-success px-3 py-2">{{$item->status}}</span>
+                            @elseif ($item->status === 'inactive')
+                                <span class="badge text-bg-danger px-3 py-2">{{$item->status}}</span>
+                            @endif
                         </td>
                         <td>
                             <button type="button" class="btn btn-warning" data-coreui-toggle="modal" data-coreui-target="#edit_vendor{{$item->id}}" data-coreui-whatever="@mdo">
@@ -96,9 +100,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-success" data-coreui-toggle="modal" data-coreui-target="#show_vendor{{$item->id}}" data-coreui-whatever="@mdo">
+                            <a href="{{route('admin.vendor.details', $item->id)}}" class="btn btn-success">
                                 <i class="fa-solid fa-eye"></i>
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 @endforeach
