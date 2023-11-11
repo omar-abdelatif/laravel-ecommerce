@@ -14,12 +14,13 @@
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/imgs/icons/favicon.svg')}}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/frontend/css/plugins/animate.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/css/main.css')}}">
 </head>
 <body>
     @yield('siteModals')
-    @yield('siteHeader')
+    @include('frontend.layout.header')
     <main class="main">
         @yield('site')
         @include('frontend.layout.footer')
@@ -33,7 +34,9 @@
             </div>
         </div>
     </main>
-    @yield('scripts')
+    <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('assets/js/plugins/scrollup.js')}}"></script>
     <script src="{{asset('assets/js/main.js')}}"></script>
     <script src="{{asset('assets/js/shop.js')}}"></script>
 </body>

@@ -18,7 +18,7 @@ use App\Http\Controllers\VendorProfileController;
 
 Auth::routes(['verify' => true]);
 
-Route::view('/', 'frontend.layout.app');
+Route::view('/', 'frontend.master');
 
 Route::view('login', 'auth.login')->name('login');
 
