@@ -1,6 +1,7 @@
 <header class="header-area header-style-1 header-height-2">
     <div class="mobile-promotion">
-        <span>Grand opening,
+        <span>
+            Grand opening,
             <strong>up to 15%</strong>
             off all items. Only
             <strong>3 days</strong>
@@ -47,25 +48,28 @@
                                 <ul class="language-dropdown">
                                     <li>
                                         <a href="#">
-                                            <img src="assets/imgs/theme/flag-fr.png" alt="" />
+                                            <img src="assets/frontend/imgs/theme/flag-fr.png" alt="" />
                                             Français
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="assets/imgs/theme/flag-dt.png" alt="" />
+                                            <img src="assets/frontend/imgs/theme/flag-dt.png" alt="" />
                                             Deutsch
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="assets/imgs/theme/flag-ru.png" alt="" />
+                                            <img src="assets/frontend/imgs/theme/flag-ru.png" alt="" />
                                             Pусский
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
+                            <li>
+                                Need help? Call Us:
+                                <strong class="text-brand"> + 1800 900</strong>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -202,7 +206,9 @@
                                 <a href="page-account.html">
                                     <img class="svgInject" alt="Nest" src="assets/frontend/imgs/theme/icons/icon-user.svg" />
                                 </a>
-                                <a href="page-account.html"><span class="lable ml-0">Account</span></a>
+                                <a href="page-account.html">
+                                    <span class="lable ml-0">Account</span>
+                                </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                     <ul>
                                         <li>
@@ -270,31 +276,31 @@
                                 <ul>
                                     <li>
                                         <a href="shop-grid-right.html">
-                                            <img src="assets/imgs/theme/icons/category-1.svg" alt="" />
+                                            <img src="assets/frontend/imgs/theme/icons/category-1.svg" alt="" />
                                             Milks and Dairies
                                         </a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html">
-                                            <img src="assets/imgs/theme/icons/category-2.svg" alt="" />
+                                            <img src="assets/frontend/imgs/theme/icons/category-2.svg" alt="" />
                                             Clothing & beauty
                                         </a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html">
-                                            <img src="assets/imgs/theme/icons/category-3.svg" alt="" />
+                                            <img src="assets/frontend/imgs/theme/icons/category-3.svg" alt="" />
                                             Pet Foods & Toy
                                         </a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html">
-                                            <img src="assets/imgs/theme/icons/category-4.svg" alt="" />
+                                            <img src="assets/frontend/imgs/theme/icons/category-4.svg" alt="" />
                                             Baking material
                                         </a>
                                     </li>
                                     <li>
                                         <a href="shop-grid-right.html">
-                                            <img src="assets/imgs/theme/icons/category-5.svg" alt="" />
+                                            <img src="assets/frontend/imgs/theme/icons/category-5.svg" alt="" />
                                             Fresh Fruit
                                         </a>
                                     </li>
