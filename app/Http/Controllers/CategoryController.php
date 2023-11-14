@@ -15,9 +15,19 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required'
+            'title' => 'required',
+            'img' => 'required', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2048'
         ]);
-        $store = Category::create($validated);
+        if ($request->hasFile('img') && $request->file('img')->isValid()) {
+            $upload = $request->file('img');
+            $name = time() . '.' . $upload->getClientOriginalExtension();
+            $destinationPath = public_path('assets/admin/categories');
+            $upload->move($destinationPath, $name);
+        }
+        $store = Category::create([
+            "title" => $validated['title'],
+            'img' => $name
+        ]);
         if ($store) {
             $notification = [
                 'message' => 'Inserted Successfully',

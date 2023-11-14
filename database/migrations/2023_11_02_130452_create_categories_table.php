@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
+            $table->string('img');
             $table->string('title');
             $table->timestamps();
         });

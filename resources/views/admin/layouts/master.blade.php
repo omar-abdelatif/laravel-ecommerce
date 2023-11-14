@@ -42,7 +42,11 @@
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                     </li>
                 </ul>
-                <ul class="header-nav ms-auto"></ul>
+                <ul class="header-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/" class="btn btn-success">View Site</a>
+                    </li>
+                </ul>
                 <ul class="header-nav ms-3">
                     <li class="nav-item dropdown">
                         <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">

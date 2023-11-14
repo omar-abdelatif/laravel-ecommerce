@@ -31,13 +31,19 @@
                     <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body bg-dark text-white">
-                    <form action="{{route('admin.categories.store')}}" method="post">
+                    <form action="{{route('admin.categories.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group text-center mb-3">
                             <label for="title">
                                 <b>Title</b>
                             </label>
                             <input type="text" name="title" id="title" class="form-control text-center" placeholder="Category Name">
+                        </div>
+                        <div class="form-group text-center mb-3">
+                            <label for="title">
+                                <b>Image</b>
+                            </label>
+                            <input type="file" name="img" id="title" class="form-control text-center" accept="image/*">
                         </div>
                         <button type="submit" class="btn btn-success w-100 mt-3 text-center text-white">Submit</button>
                     </form>
@@ -69,6 +75,7 @@
                 <tr>
                     <td class="text-center">#</td>
                     <td class="text-center">Title</td>
+                    <td class="text-center">Image</td>
                     <td class="text-center">Action</td>
                 </tr>
             </thead>
@@ -77,6 +84,9 @@
                     <tr>
                         <td>{{$i++}}</td>
                         <td>{{$category->title}}</td>
+                        <td>
+                            <img src="{{asset('assets/admin/categories/'.$category->img)}}" alt="{{$category->img}}">
+                        </td>
                         <td>
                             {{-- ! Edit ! --}}
                             <button type="button" class="btn btn-warning" data-coreui-toggle="modal" data-coreui-target="#edit_categories{{$category->id}}" data-coreui-whatever="@mdo">
@@ -92,7 +102,7 @@
                                             <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body bg-dark text-white">
-                                            <form action="{{route('admin.categories.update')}}" method="post">
+                                            <form action="{{route('admin.categories.update')}}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$category->id}}">
                                                 <div class="form-group text-center mb-3">
@@ -100,6 +110,12 @@
                                                         <b class="text-white">Title</b>
                                                     </label>
                                                     <input type="text" name="title" id="title" class="form-control text-center" value="{{$category->title}}">
+                                                </div>
+                                                <div class="form-group text-center mb-3">
+                                                    <label for="img" class="mb-2">
+                                                        <b class="text-white">Image</b>
+                                                    </label>
+                                                    <input type="file" name="img" id="img" class="form-control text-center" value="{{$category->img}}">
                                                 </div>
                                                 <button type="submit" class="btn btn-success w-100 mt-3 text-center text-white">Submit</button>
                                             </form>
