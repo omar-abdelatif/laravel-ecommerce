@@ -1,8 +1,8 @@
-@php
+{{-- @php
     $id= Auth::user()->id;
     $userId = App\Models\User::find($id);
     $role = $userId->role;
-@endphp
+@endphp --}}
 <header class="header-area header-style-1 header-height-2">
     <div class="header-top header-top-ptb-1 d-none d-lg-block">
         <div class="container">
@@ -124,7 +124,7 @@
                             <div class="header-action-icon-2">
                                 <a href="shop-wishlist.html">
                                     <img class="svgInject" alt="Nest" src="assets/frontend/imgs/theme/icons/icon-heart.svg" />
-                                    <span class="pro-count blue">6</span>
+                                    <span class="pro-count blue">0</span>
                                 </a>
                                 <a href="shop-wishlist.html">
                                     <span class="lable">Wishlist</span>
@@ -133,7 +133,7 @@
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="shop-cart.html">
                                     <img alt="Nest" src="assets/frontend/imgs/theme/icons/icon-cart.svg" />
-                                    <span class="pro-count blue">2</span>
+                                    <span class="pro-count blue">0</span>
                                 </a>
                                 <a href="shop-cart.html">
                                     <span class="lable">Cart</span>
@@ -207,7 +207,15 @@
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                     <ul>
-                                        @if($role === 'admin')
+                                        <li>
+                                            <i class="fi fi-rs-user mr-10"></i>
+                                            <a href="{{route('user.login')}}">Login</a>
+                                        </li>
+                                        <li>
+                                            <i class="fi fi-rs-user mr-10"></i>
+                                            <a href="{{route('user.register')}}">Register</a>
+                                        </li>
+                                        {{-- @if($role === 'admin')
                                             <li>
                                                 <a href="{{route('admin.dashboard')}}">
                                                     <i class="fi fi-rs-user mr-10"></i>
@@ -245,10 +253,13 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="page-login.html">
-                                                    <i class="fi fi-rs-sign-out mr-10"></i>
-                                                    Sign out
-                                                </a>
+                                                <form method="POST" action="{{ route('user.logout') }}">
+                                                    @csrf
+                                                    <a href="{{route('user.logout')}}"  onclick="event.preventDefault(); this.closest('form').submit();">
+                                                        <i class="fi fi-rs-sign-out mr-10"></i>
+                                                        Sign out
+                                                    </a>
+                                                </form>
                                             </li>
                                         @elseif ($role === 'vendor')
                                             <li>
@@ -330,7 +341,8 @@
                                                     Sign out
                                                 </a>
                                             </li>
-                                        @endif
+                                        @else
+                                        @endif --}}
                                     </ul>
                                 </div>
                             </div>

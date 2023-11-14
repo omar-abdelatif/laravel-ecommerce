@@ -12,15 +12,24 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RegisteVendorController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\VendorProductsController;
 use App\Http\Controllers\VendorProfileController;
 
 
 Auth::routes(['verify' => true]);
 
-Route::view('/', 'frontend.master');
-Route::view('login', 'frontend/pages/auth/user/login')->name('users.login');
+//! Site Routes
+Route::middleware('guest')->group(function () {
+    Route::get('/', [SiteController::class, 'index']);
+    Route::view('users/register', 'frontend/pages/auth/user/register')->name('user.register');
+    Route::view('user/login', 'frontend/pages/auth/user/login')->name('user.login');
+    Route::post('signout', [SiteController::class, 'logout'])->name('user.logout');
+});
 
+
+
+//! Dashboard Login to Admin And Vendor Dashboard
 Route::view('login', 'auth.login')->name('login');
 
 //! Admin Routes

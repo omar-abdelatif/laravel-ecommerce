@@ -1,3 +1,1 @@
-<div>
-    <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
-</div>
+Welcome To The Login Blade Page

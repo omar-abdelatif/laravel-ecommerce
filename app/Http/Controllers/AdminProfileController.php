@@ -41,6 +41,9 @@ class AdminProfileController extends Controller
             $user->password = Hash::make($request->password);
             $user->phone = $request->phone;
             $user->address = $request->address;
+            $user->website = $request->website;
+            $user->fb = $request->fb;
+            $user->whatsapp = $request->whatsapp;
             $update = $user->save();
             $notification = [
                 'message' => 'Successfully Updated',
