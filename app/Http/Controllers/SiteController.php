@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
@@ -19,12 +20,17 @@ class SiteController extends Controller
     {
         return view('frontend.pages.auth.vendor.register');
     }
-    // public function login(Request $request)
-    // {
-    // }
+    public function forgetPassword()
+    {
+        return view('frontend.pages.auth.forget_password');
+    }
     public function login()
     {
         return view('frontend.pages.auth.user.login');
+    }
+    public function loginRequest(LoginRequest $request)
+    {
+        
     }
     public function logout(Request $request)
     {

@@ -26,6 +26,8 @@ Route::controller(SiteController::class)->group(function () {
     Route::get('users/register', 'userRegister')->name('user.register');
     Route::post('signout', 'logout')->name('user.logout');
     Route::get('become_vendor', 'becomeVendor')->name('become.vendor');
+    Route::get('forget_password', 'forgetPassword')->name('forget');
+    Route::post('loginRequst', 'loginRequest')->name('user.loginRequest');
 });
 
 //! Dashboard Login to Admin And Vendor Dashboard

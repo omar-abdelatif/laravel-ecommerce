@@ -1,1 +1,1 @@
-Welcome To The Register Blade Page
+@extends('frontend.layout.app')
