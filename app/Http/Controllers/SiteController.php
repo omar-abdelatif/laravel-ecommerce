@@ -11,6 +11,17 @@ class SiteController extends Controller
     {
         return view('frontend.master');
     }
+    public function userRegister()
+    {
+        return view('frontend/pages/auth/user/register');
+    }
+    public function becomeVendor()
+    {
+        return view('frontend.pages.auth.vendor.register');
+    }
+    // public function login(Request $request)
+    // {
+    // }
     public function login()
     {
         return view('frontend.pages.auth.user.login');

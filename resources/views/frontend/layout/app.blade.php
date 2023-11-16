@@ -22,7 +22,6 @@
     @yield('siteModals')
     @include('frontend.layout.header')
     <main class="main">
-        @yield('site')
         <div id="preloader-active">
             <div class="preloader d-flex align-items-center justify-content-center">
                 <div class="preloader-inner position-relative">
@@ -32,6 +31,7 @@
                 </div>
             </div>
         </div>
+        @yield('site')
         @include('frontend.layout.footer')
     </main>
     <!-- Vendor JS-->

@@ -1,8 +1,11 @@
-{{-- @php
-    $id= Auth::user()->id;
-    $userId = App\Models\User::find($id);
-    $role = $userId->role;
-@endphp --}}
+@php
+    $role = '';
+    if(Auth::user()){
+        $id= Auth::user()->id;
+        $userId = App\Models\User::find($id);
+        $role = $userId->role;
+    }
+@endphp
 <header class="header-area header-style-1 header-height-2">
     <div class="header-top header-top-ptb-1 d-none d-lg-block">
         <div class="container">
@@ -207,15 +210,7 @@
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                     <ul>
-                                        <li>
-                                            <i class="fi fi-rs-user mr-10"></i>
-                                            <a href="{{route('user.login')}}">Login</a>
-                                        </li>
-                                        <li>
-                                            <i class="fi fi-rs-user mr-10"></i>
-                                            <a href="{{route('user.register')}}">Register</a>
-                                        </li>
-                                        {{-- @if($role === 'admin')
+                                        @if($role === 'admin')
                                             <li>
                                                 <a href="{{route('admin.dashboard')}}">
                                                     <i class="fi fi-rs-user mr-10"></i>
@@ -342,7 +337,19 @@
                                                 </a>
                                             </li>
                                         @else
-                                        @endif --}}
+                                            <li>
+                                                <i class="fi fi-rs-user mr-10"></i>
+                                                <a href="{{route('user.login')}}">Login</a>
+                                            </li>
+                                            <li>
+                                                <i class="fi fi-rs-user mr-10"></i>
+                                                <a href="{{route('user.register')}}">Register</a>
+                                            </li>
+                                            <li>
+                                                <i class="fi fi-rs-user mr-10"></i>
+                                                <a href="{{route('become.vendor')}}">Become A Vendor</a>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

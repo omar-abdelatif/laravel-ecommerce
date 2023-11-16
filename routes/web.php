@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VendorController;
@@ -12,22 +13,20 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RegisteVendorController;
-use App\Http\Controllers\SiteController;
-use App\Http\Controllers\VendorProductsController;
 use App\Http\Controllers\VendorProfileController;
+use App\Http\Controllers\VendorProductsController;
 
 
 Auth::routes(['verify' => true]);
 
 //! Site Routes
-Route::middleware('guest')->group(function () {
-    Route::get('/', [SiteController::class, 'index']);
-    Route::view('users/register', 'frontend/pages/auth/user/register')->name('user.register');
-    Route::view('user/login', 'frontend/pages/auth/user/login')->name('user.login');
-    Route::post('signout', [SiteController::class, 'logout'])->name('user.logout');
+Route::controller(SiteController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('user/login', 'login')->name('user.login');
+    Route::get('users/register', 'userRegister')->name('user.register');
+    Route::post('signout', 'logout')->name('user.logout');
+    Route::get('become_vendor', 'becomeVendor')->name('become.vendor');
 });
-
-
 
 //! Dashboard Login to Admin And Vendor Dashboard
 Route::view('login', 'auth.login')->name('login');
@@ -36,6 +35,7 @@ Route::view('login', 'auth.login')->name('login');
 Route::group(['prefix' => 'admin'], function () {
     //! Register Routes
     Route::controller(RegisterController::class)->group(function () {
+        Route::view('signup', 'auth/register');
         Route::post('register', 'store')->name('admin.register');
     });
     Route::middleware(['auth', 'role:admin', 'verified'])->group(function () {

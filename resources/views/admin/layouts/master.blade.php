@@ -42,11 +42,27 @@
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                     </li>
                 </ul>
-                <ul class="header-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="/" class="btn btn-success">View Site</a>
-                    </li>
-                </ul>
+                <nav class="header-nav ms-auto">
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                        <input class="btn-check" id="btn-light-theme" type="radio" name="theme-switch" autocomplete="off" value="light" onchange="handleThemeChange(this)">
+                        <label class="btn btn-primary" for="btn-light-theme">
+                            <svg class="icon">
+                                <use xlink:href="{{asset('icons/coreui.svg#cil-sun')}}"></use>
+                            </svg>
+                        </label>
+                        <input class="btn-check" id="btn-dark-theme" type="radio" name="theme-switch" autocomplete="off" value="dark" onchange="handleThemeChange(this)">
+                        <label class="btn btn-primary" for="btn-dark-theme">
+                            <svg class="icon">
+                                <use xlink:href="{{asset('icons/coreui.svg#cil-moon')}}"></use>
+                            </svg>
+                        </label>
+                    </div>
+                    <ul class="header-nav ms-3">
+                        <li class="nav-item">
+                            <a href="/" class="btn btn-success">View Site</a>
+                        </li>
+                    </ul>
+                </nav>
                 <ul class="header-nav ms-3">
                     <li class="nav-item dropdown">
                         <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">

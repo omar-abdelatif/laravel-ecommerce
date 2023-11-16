@@ -91,6 +91,30 @@
                             </span>
                             <input class="form-control" id="image" type="file" name="img" value="{{ auth()->user()->img }}">
                         </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-image') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control" id="image" type="file" name="img" value="{{ auth()->user()->img }}">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-image') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control" id="image" type="file" name="img" value="{{ auth()->user()->img }}">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('icons/coreui.svg#cil-image') }}"></use>
+                                </svg>
+                            </span>
+                            <input class="form-control" id="image" type="file" name="img" value="{{ auth()->user()->img }}">
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
